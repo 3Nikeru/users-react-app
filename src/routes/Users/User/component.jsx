@@ -8,14 +8,14 @@ const User = () =>{
     let {userId} = useParams();
 
     const userKey = Number(userId);
-    const {data, error} = useDataUsers(`https://jsonplaceholder.typicode.com/users/${userKey}`);
+    const {data, error} = useDataUsers(`https://jsonplaceholder.typicode.com/users/${userKey}`, userKey);
     
     const [user_data, setUser] = useState([]);
     
     useEffect(()=>{
         setUser(data);
     }, [data]);
-    
+
     console.log( user_data)
         if(user_data !== undefined){
             return(
