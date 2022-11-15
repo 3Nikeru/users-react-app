@@ -16,7 +16,6 @@ const User = () =>{
         setUser(data);
     }, [data]);
 
-    console.log( user_data)
         if(user_data !== undefined){
             return(
                 <div className="user">

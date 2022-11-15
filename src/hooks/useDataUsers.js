@@ -9,7 +9,7 @@ let useDataUsers = (url, id) =>{
         .then(res => res.json())
         .then(setData)
         .catch(setError)
-    }, [id])
+    }, [url, id])
 
     return {
         data,
