@@ -7,7 +7,8 @@ import './style.scss'
 const User = () =>{
     let {userId} = useParams();
 
-    const {data, error} = useDataUsers('https://jsonplaceholder.typicode.com/users');
+    const userKey = Number(userId);
+    const {data, error} = useDataUsers(`https://jsonplaceholder.typicode.com/users/${userKey}`, userKey);
     
     const [user_data, setUser] = useState([]);
     
@@ -15,19 +16,14 @@ const User = () =>{
         setUser(data);
     }, [data]);
 
-    function getUser(usersId){
-        return user_data.find(user => user.id === usersId)
-    }
-    let user = getUser(Number(userId));
-    console.log(user);
-        if(user !== undefined){
+        if(user_data !== undefined){
             return(
                 <div className="user">
-                   <h2>User {userId}</h2>
-                   <p>Name - {user.name}</p>
-                   <p>Username - {user.username}</p>
-                   <p>Email - {user.email}</p>
-                   <p>Website - {user.website}</p>
+                   <h2>User {userKey}</h2>
+                   <p>Name - {user_data.name}</p>
+                   <p>Username - {user_data.username}</p>
+                   <p>Email - {user_data.email}</p>
+                   <p>Website - {user_data.website}</p>
                 </div>
             )
         }if(error !== null){

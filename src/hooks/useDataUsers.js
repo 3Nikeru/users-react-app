@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-let useDataUsers = (url) =>{
+let useDataUsers = (url, id) =>{
     const [data, setData] = useState([]);
     const [error, setError] = useState(null);
 
@@ -9,7 +9,7 @@ let useDataUsers = (url) =>{
         .then(res => res.json())
         .then(setData)
         .catch(setError)
-    }, [])
+    }, [url, id])
 
     return {
         data,
